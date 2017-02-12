@@ -23,7 +23,6 @@ function sort(data, propertyToSort) {
             break;
         default:
             throw new Error('This function doesn\'t support sorting this type of data');
-            break;
     }
 
     let swaps;
