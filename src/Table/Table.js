@@ -19,7 +19,7 @@ class Table extends Component {
     }
 
     getData () {
-        fetch("http://jsonplaceholder.typicode.com/posts")
+        fetch("data.json")
             .then((response) => response.json())
             .then((json) => {
                 this.setState({ appData: json, displayedData: json.slice(0, this.state.displayNumber) })
