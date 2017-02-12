@@ -1,0 +1,9 @@
+.Table {
+    margin: 0 50px 50px 50px;
+    table-layout: fixed;
+    max-width: 90%;
+}
+
+.TableData {
+    word-wrap: break-word
+}
