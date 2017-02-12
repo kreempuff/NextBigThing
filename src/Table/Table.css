@@ -1,9 +1,10 @@
 .Table {
-    margin: 0 50px 50px 50px;
+    /*margin: 0 50px 50px 50px;*/
     table-layout: fixed;
-    max-width: 90%;
+    width: 100%;
 }
 
 .TableData {
-    word-wrap: break-word
+    word-wrap: break-word;
+    text-overflow: ellipsis;
 }
