@@ -24,3 +24,14 @@
     margin: auto;
     width: 80%;
 }
+
+.NumItemsList {
+    display: inline;
+    list-style: none;
+}
+
+.NumItemsList li {
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+}

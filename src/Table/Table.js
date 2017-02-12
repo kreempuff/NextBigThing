@@ -15,7 +15,7 @@ class Table extends Component {
         super(props);
 
         this.columnHeaderClickHandler = this.columnHeaderClickHandler.bind(this);
-        this.state = { appData: [], displayedData: [], displayNumber: 55 }
+        this.state = { appData: [], displayedData: [], displayNumber: 10 }
     }
 
     getData () {
@@ -45,6 +45,9 @@ class Table extends Component {
             case 'Id':
                 propertyToSortBy = 'id';
                 break;
+            case 'User Id':
+                propertyToSortBy = 'userId';
+                break;
         }
 
         sort(this.state.appData, propertyToSortBy);
@@ -67,6 +70,9 @@ class Table extends Component {
                 <div className="mdl-tooltip mdl-tooltip--right" data-mdl-for="idHeader">
                     Click to sort by id
                 </div>
+                <div className="mdl-tooltip mdl-tooltip--right" data-mdl-for="userIdHeader">
+                    Click to sort by userId
+                </div>
                 <table className="Table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                     <thead>
                     <tr>
@@ -82,19 +88,28 @@ class Table extends Component {
                             className="TableHeader mdl-data-table__cell--non-numeric">
                             <span id="idHeader">Id</span>
                         </th>
+                        <th onClick={this.columnHeaderClickHandler}
+                            className="TableHeader mdl-data-table__cell--non-numeric">
+                            <span id="userIdHeader">User Id</span>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td className="mdl-data-table__cell--non-numeric" colSpan="4">
+                            <span>Displaying: {this.state.displayNumber} items</span>
+                            <ul className="NumItemsList">
+                                <li>25</li>
+                                <li>50</li>
+                                <li>100</li>
+                            </ul>
+                        </td>
+                    </tr>
                     {this.state.displayedData
                         .map((data, index) => {
                             return <TableRow key={index.toString()} _data={data}/>
                         })}
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colSpan="3">Displaying: {this.state.displayNumber} items</td>
-                    </tr>
-                    </tfoot>
                 </table>
             </div>
         )
@@ -110,6 +125,7 @@ class TableRow extends Component {
                 <td className="TableData mdl-data-table__cell--non-numeric">{this.props._data.title}</td>
                 <td className="TableData mdl-data-table__cell--non-numeric">{this.props._data.body}</td>
                 <td className="TableData mdl-data-table__cell">{this.props._data.id}</td>
+                <td className="TableData mdl-data-table__cell">{this.props._data.userId}</td>
             </tr>
         )
     }
