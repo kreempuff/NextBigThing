@@ -15,7 +15,7 @@ class Table extends Component {
         super(props);
 
         this.columnHeaderClickHandler = this.columnHeaderClickHandler.bind(this);
-        this.state = { appData: [], displayedData: [], displayNumber: 10 }
+        this.state = { appData: [], displayedData: [], displayNumber: 100 }
     }
 
     getData () {
