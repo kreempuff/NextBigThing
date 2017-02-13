@@ -8,7 +8,7 @@
  */
 function sort(data, propertyToSort) {
     // At one hundred items and a weekend project this seemed more appropriate than
-    // bringing in lodash for the sort function
+    // bringing in lodash for just for the sort function
     // Though that would've saved me some effort
     // Good practice though
     const lengthOfData = data.length;
@@ -30,7 +30,7 @@ function sort(data, propertyToSort) {
     // TODO bring in lodash or use a better sorting algo
     // Bubble sort
     // Interestingly enough, once again those computer science ppl know their stuff
-    // at 100 items this sorts arbritrary data in about 0.2s
+    // at 100 items this sorts arbitrary data in about 0.2s (according to the jest testing library)
     // at 10000 it was creeping into the tens of seconds, yikes
     do {
         swaps = 0;
@@ -48,7 +48,7 @@ function sort(data, propertyToSort) {
 
 /**
  * @description returns true if the first string comes after the second, lexicographically
- * returns false if the second string comes before the first
+ * returns false if the strings were passed in, in the right order
  * @example
  * compareStrings("ab", "aa") === true
  * compareStrings("ac", "ab") === false

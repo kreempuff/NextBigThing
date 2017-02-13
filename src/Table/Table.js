@@ -90,28 +90,8 @@ class Table extends Component {
                 <table className="Table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                     <thead>
                     <tr>
-                        <th onClick={this.columnHeaderClickHandler}
-                            className="TableHeader mdl-data-table__cell--non-numeric">
-                            <span id="titleHeader">Title</span>
-                        </th>
-                        <th onClick={this.columnHeaderClickHandler}
-                            className="TableHeader mdl-data-table__cell--non-numeric">
-                            <span id="bodyHeader">Body</span>
-                        </th>
-                        <th onClick={this.columnHeaderClickHandler}
-                            className="TableHeader mdl-data-table__cell--non-numeric">
-                            <span id="idHeader">Id</span>
-                        </th>
-                        <th onClick={this.columnHeaderClickHandler}
-                            className="TableHeader mdl-data-table__cell--non-numeric">
-                            <span id="userIdHeader">User Id</span>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
                         <td className="mdl-data-table__cell--non-numeric" colSpan="4">
-                            <span>Displaying: {this.state.displayNumber} items</span>
+                            <span>Displaying: {this.state.displayNumber} out of {this.state.appData.length} items</span>
                             <ul className="NumItemsList">
                                 <li>
                                     <button
@@ -148,6 +128,26 @@ class Table extends Component {
                             </ul>
                         </td>
                     </tr>
+                    <tr>
+                        <th onClick={this.columnHeaderClickHandler}
+                            className="TableHeader mdl-data-table__cell--non-numeric">
+                            <span id="titleHeader">Title</span>
+                        </th>
+                        <th onClick={this.columnHeaderClickHandler}
+                            className="TableHeader mdl-data-table__cell--non-numeric">
+                            <span id="bodyHeader">Body</span>
+                        </th>
+                        <th onClick={this.columnHeaderClickHandler}
+                            className="TableHeader mdl-data-table__cell--non-numeric">
+                            <span id="idHeader">Id</span>
+                        </th>
+                        <th onClick={this.columnHeaderClickHandler}
+                            className="TableHeader mdl-data-table__cell--non-numeric">
+                            <span id="userIdHeader">User Id</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {this.state.displayedData
                         .map((data, index) => {
                             return <TableRow key={index.toString()} _data={data}/>

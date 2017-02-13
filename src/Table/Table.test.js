@@ -26,7 +26,7 @@ describe('Table', () => {
     // Quickly becoming integrated tests as the sort function also needs to be mocked out
     // At least I know that the click handler is being called properly
     // The stack trace shows an undefined error in 'sortData.js'
-    // Why? Because of the issue above the 'state' of the component is not ready by the time this
+    // Why? Because of the issue above. The 'state' of the component is not ready by the time this
     // synchronous test is run
 
     // Note to self: Remove 'x' to run

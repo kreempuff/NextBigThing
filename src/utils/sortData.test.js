@@ -33,7 +33,7 @@ describe('sortData', ()=> {
         });
 
        it('should return false when first arg is less than second arg', () => {
-           expect(compareNumbers(100, 1000)).toEqual(false)
+           expect(compareNumbers(25, 32)).toEqual(false)
        });
    })
 
@@ -57,11 +57,11 @@ describe('sortData', ()=> {
         it('should return false when first arg comes before second arg lexicographically', () => {
             expect(compareStrings("af", "ag")).toEqual(false)
         });
-    })
+    });
 
     describe('sort', () => {
         it('should sort by number in data object array', () => {
-            const numItemsToGen = 1e2;
+            const numItemsToGen = 100;
             let data = [], expected = [];
 
             for (let i = 0; i < numItemsToGen; i++ ) {
@@ -118,7 +118,7 @@ describe('sortData', ()=> {
             expect(data).toEqual(expected);
         });
 
-        it('should throw error if trying to sort on unsupported type', () => {
+        it('should throw error if trying to sort on an unsupported type', () => {
             let data = [
                 {
                     _array: [],
