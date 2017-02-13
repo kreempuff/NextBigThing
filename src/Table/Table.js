@@ -95,16 +95,16 @@ class Table extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td className="mdl-data-table__cell--non-numeric" colSpan="4">
-                            <span>Displaying: {this.state.displayNumber} items</span>
-                            <ul className="NumItemsList">
-                                <li>25</li>
-                                <li>50</li>
-                                <li>100</li>
-                            </ul>
-                        </td>
-                    </tr>
+                    {/*<tr>*/}
+                        {/*<td className="mdl-data-table__cell--non-numeric" colSpan="4">*/}
+                            {/*<span>Displaying: {this.state.displayNumber} items</span>*/}
+                            {/*<ul className="NumItemsList">*/}
+                                {/*<li>25</li>*/}
+                                {/*<li>50</li>*/}
+                                {/*<li>100</li>*/}
+                            {/*</ul>*/}
+                        {/*</td>*/}
+                    {/*</tr>*/}
                     {this.state.displayedData
                         .map((data, index) => {
                             return <TableRow key={index.toString()} _data={data}/>
@@ -132,3 +132,4 @@ class TableRow extends Component {
 }
 
 export default Table
+export {TableRow}

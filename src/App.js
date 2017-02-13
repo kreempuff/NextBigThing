@@ -6,10 +6,6 @@ import Table from './Table/Table'
 
 class App extends Component {
 
-    constructor (props) {
-        super(props)
-        this.state = {appData: []}
-    }
     render () {
         return (
             <div className="App">
@@ -17,7 +13,7 @@ class App extends Component {
                     <img src={pizza} className="App-logo" alt="logo"/>
                     <h2>It's just a Table</h2>
                 </div>
-                <Table appData={this.state.appData}/>
+                <Table />
             </div>
         );
     }

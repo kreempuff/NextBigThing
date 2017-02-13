@@ -118,7 +118,7 @@ describe('sortData', ()=> {
             expect(data).toEqual(expected);
         });
 
-        fit('should throw error if trying to sort on unsupported type', () => {
+        it('should throw error if trying to sort on unsupported type', () => {
             let data = [
                 {
                     _array: [],
