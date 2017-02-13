@@ -27,6 +27,11 @@ function sort(data, propertyToSort) {
 
     let swaps;
 
+    // TODO bring in lodash or use a better sorting algo
+    // Bubble sort
+    // Interestingly enough, once again those computer science ppl know their stuff
+    // at 100 items this sorts arbritrary data in about 0.2s
+    // at 10000 it was creeping into the tens of seconds, yikes
     do {
         swaps = 0;
         for (let i = 0; i < lengthOfData - 1; i++) {
@@ -84,15 +89,18 @@ function compareNumbers (num1, num2) {
     return num1 > num2;
 }
 
-
+/**
+ * @description taking advantage of javascript's pass by reference for objects (including arrays)
+ * to swap two values
+ * @param data
+ * @param index1
+ * @param index2
+ */
 function swap (data, index1, index2) {
     let temp = data[index1];
     data[index1] = data[index2];
     data[index2] = temp;
 }
-
-
-
 
 export default sort
 export {swap, compareNumbers, compareStrings}
