@@ -168,8 +168,8 @@ class TableRow extends Component {
             <tr>
                 <td className="TableData mdl-data-table__cell--non-numeric">{this.props._data.title}</td>
                 <td className="TableData mdl-data-table__cell--non-numeric">{this.props._data.body}</td>
-                <td className="TableData mdl-data-table__cell">{this.props._data.id}</td>
-                <td className="TableData mdl-data-table__cell">{this.props._data.userId}</td>
+                <td className="TableData mdl-data-table__cell--non-numeric">{this.props._data.id}</td>
+                <td className="TableData mdl-data-table__cell--non-numeric">{this.props._data.userId}</td>
             </tr>
         )
     }
