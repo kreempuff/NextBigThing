@@ -15,20 +15,34 @@ class Table extends Component {
         super(props);
 
         this.columnHeaderClickHandler = this.columnHeaderClickHandler.bind(this);
-        this.state = { appData: [], displayedData: [], displayNumber: 100 }
+        this.displayNumberClickHandler = this.displayNumberClickHandler.bind(this);
+        this.state = { appData: [], displayedData: [], displayNumber: 25}
     }
 
     getData () {
         fetch("data.json")
             .then((response) => response.json())
             .then((json) => {
-                this.setState({ appData: json, displayedData: json.slice(0, this.state.displayNumber) })
+                this.setState({ appData: json, displayedData: json.slice(0, this.state.displayNumber)})
             })
             .catch((error) => console.log(error))
     }
 
     componentDidMount () {
         this.getData()
+    }
+
+
+    displayNumberClickHandler(newDisplayNumber) {
+
+        // Updating highlighted button
+        this.refs[this.state.displayNumber.toString(10)].classList.remove('mdl-button--accent');
+        this.refs[newDisplayNumber.toString(10)].classList.add('mdl-button--accent');
+
+        this.setState({
+            displayedData: this.state.appData.slice(0, newDisplayNumber),
+            displayNumber: newDisplayNumber
+        })
     }
 
     columnHeaderClickHandler (e) {
@@ -62,16 +76,16 @@ class Table extends Component {
 
             <div className="TableContainer">
                 <div className="mdl-tooltip mdl-tooltip--right" data-mdl-for="titleHeader">
-                    Click to sort by title
+                    Click to sort by Title
                 </div>
                 <div className="mdl-tooltip mdl-tooltip--right" data-mdl-for="bodyHeader">
-                    Click to sort by body
+                    Click to sort by Body
                 </div>
                 <div className="mdl-tooltip mdl-tooltip--right" data-mdl-for="idHeader">
-                    Click to sort by id
+                    Click to sort by Id
                 </div>
                 <div className="mdl-tooltip mdl-tooltip--right" data-mdl-for="userIdHeader">
-                    Click to sort by userId
+                    Click to sort by User Id
                 </div>
                 <table className="Table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                     <thead>
@@ -95,22 +109,52 @@ class Table extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {/*<tr>*/}
-                        {/*<td className="mdl-data-table__cell--non-numeric" colSpan="4">*/}
-                            {/*<span>Displaying: {this.state.displayNumber} items</span>*/}
-                            {/*<ul className="NumItemsList">*/}
-                                {/*<li>25</li>*/}
-                                {/*<li>50</li>*/}
-                                {/*<li>100</li>*/}
-                            {/*</ul>*/}
-                        {/*</td>*/}
-                    {/*</tr>*/}
+                    <tr>
+                        <td className="mdl-data-table__cell--non-numeric" colSpan="4">
+                            <span>Displaying: {this.state.displayNumber} items</span>
+                            <ul className="NumItemsList">
+                                <li>
+                                    <button
+                                        ref="10"
+                                        onClick={() => {this.displayNumberClickHandler(10)}}
+                                        className="mdl-button mdl-js-button">
+                                        10
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        ref="25"
+                                        onClick={() => {this.displayNumberClickHandler(25)}}
+                                        className="mdl-button--accent mdl-button mdl-js-button">
+                                        25
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        ref="50"
+                                        onClick={() => {this.displayNumberClickHandler(50)}}
+                                        className="mdl-button mdl-js-button">
+                                        50
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        ref={this.state.appData.length}
+                                        onClick={() => {this.displayNumberClickHandler(this.state.appData.length)}}
+                                        className="mdl-button mdl-js-button">
+                                        All ({this.state.appData.length})
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
                     {this.state.displayedData
                         .map((data, index) => {
                             return <TableRow key={index.toString()} _data={data}/>
                         })}
                     </tbody>
                 </table>
+                <button onClick={() => {document.body.scrollTop = 0}} className="mdl-button">Go to Top</button>
             </div>
         )
     }
